@@ -11,3 +11,4 @@ Libraries used:
         pip install pyperclip
         
 You also need to install tesseract: https://tesseract-ocr.github.io/tessdoc/Home.html.
+After installing change the path to your tesseract.exe
