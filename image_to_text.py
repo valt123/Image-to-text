@@ -8,7 +8,23 @@ image = ImageGrab.grabclipboard()
 image.format = "PNG"
 image = ImageEnhance.Sharpness(image).enhance(10)
 image = ImageOps.grayscale(image)
+#image = ImageOps.invert(image)
+
+dark_pixels = 0
+total_pixels = 0
+for pixel in image.getdata():
+    total_pixels += 1
+    
+    if pixel <= 150:
+        dark_pixels += 1
+        
+print "{} dark pixels out of {} pixels".format(dark_pixels, total_pixels)
+
+if dark_pixels >= total_pixels / 4 * 3:
+    image = ImageOps.invert(image)
+    
+image.show()
 
 text = tess.image_to_string(image)
-
-pyperclip.copy(text)
+print text
+#pyperclip.copy(text)
